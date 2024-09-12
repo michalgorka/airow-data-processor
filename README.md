@@ -24,4 +24,6 @@ java -jar core/build/libs/core-1.0-SNAPSHOT-all.jar ABSOLUTE_PATH_TO_SUMMARY_JSO
 
 ## Heart rate interpolation model
 
-### 
+### Model 
+
+- lost function diff between measured median and predicted with threshold 2
