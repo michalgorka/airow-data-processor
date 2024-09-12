@@ -18,19 +18,10 @@ public class Main {
             modelResult[i] = modelValue;
             lagrange[i] = PolynomialFunctionLagrangeForm.evaluate(x,y,i);
         }
-        System.out.println(Arrays.toString(lagrange));
-        double[] avg = new double[7];
-        for (int i = 0; i < modelResult.length/5; i++) {
-            double sum = 0;
-            for (int j = 0; j < 5; j++) {
-                sum += lagrange[i * 5 +j];
-            }
-            avg[i] = sum / 5;
-        }
 
-        System.out.println(Arrays.toString(y));
-        System.out.println(Arrays.toString(avg));
-        System.out.println("Lost: " + lost(y, avg, 2) + "%");
+        System.out.println(Arrays.toString(lagrange));
+        System.out.println(Arrays.toString(modelResult));
+        System.out.println("Lost: " + lost(lagrange, modelResult, 2) + "%");
     }
 
     private static double lost(double[] expected, double[] predicted, double threshold) {
@@ -40,7 +31,6 @@ public class Main {
                 countValid++;
             }
         }
-
 
         return 100 - 100*countValid/expected.length;
     }
