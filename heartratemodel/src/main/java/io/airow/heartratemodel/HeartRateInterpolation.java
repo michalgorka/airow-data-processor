@@ -13,6 +13,10 @@ public class HeartRateInterpolation {
 
             var abs = Math.abs(n1 - n0);
 
+            if (i == 0) {
+
+            }
+
             for (int k = 0; k < numberOfElements; k++) {
                 result[i*numberOfElements + k % numberOfElements] = getRandomNumber(n0 - abs, n0 + abs);
             }

@@ -7,19 +7,23 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
+        double[] x = {3,7,12,17,22,27,32};
         double[] y = {120,126,122,140,142,155,145};
 
+
+        double[] lagrange = new double[35];
         double[] modelResult = new double[35];
         for (int i = 0; i < y.length*5; i++) {
             var modelValue = HeartRateInterpolation.execute(y, i);
             modelResult[i] = modelValue;
+            lagrange[i] = PolynomialFunctionLagrangeForm.evaluate(x,y,i);
         }
-
+        System.out.println(Arrays.toString(lagrange));
         double[] avg = new double[7];
         for (int i = 0; i < modelResult.length/5; i++) {
             double sum = 0;
             for (int j = 0; j < 5; j++) {
-                sum += modelResult[i * 5 +j];
+                sum += lagrange[i * 5 +j];
             }
             avg[i] = sum / 5;
         }
